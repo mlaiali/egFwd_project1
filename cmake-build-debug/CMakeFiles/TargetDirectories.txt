@@ -1,0 +1,3 @@
+/home/server/CLionProjects/egFwd_project1/cmake-build-debug/CMakeFiles/egFwd_project1.dir
+/home/server/CLionProjects/egFwd_project1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/server/CLionProjects/egFwd_project1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
