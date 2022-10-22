@@ -4,7 +4,7 @@
 
 #include "application.h"
 #define appStart main
-void appl(ST_cardData_t *cardData);
+
 ST_cardData_t stCardData;
 ST_terminalData_t stTerminalData;
 void appStart(void ){
@@ -20,7 +20,7 @@ void appStart(void ){
 
     //card module
     cardHolderName = getCardHolderName(cardData);
-    cardExpDate = getCardPAN(cardData);
+    cardExpDate = getCardExpiryDate(cardData);
     cardPAN = getCardPAN(cardData);
 
     if(cardHolderName == WRONG_NAME){
@@ -58,8 +58,9 @@ void appStart(void ){
     transactionDate = getTransactionDate(termData);
     cardExpired = isCardExpired(cardData,termData);
     transactionAmount = getTransactionAmount(termData);
-    belowMaxAmount = isBelowMaxAmount(termData);
     maxAmount = setMaxAmount(termData, 15000);
+    belowMaxAmount = isBelowMaxAmount(termData);
+
     validCardPAN = isValidCardPAN(cardData);
 
     if (transactionDate == WRONG_DATE){
@@ -101,7 +102,33 @@ void appStart(void ){
     ST_transaction_t stTransaction;
     ST_transaction_t *transaction = &stTransaction;
 
-    ///server module ;
+    ///server module ;get card data and terminal data
     transaction->cardHolderData = cardHolderData;
+    transaction->terminalData = terminalData;
+
+    receiveTransaction = receiveTransactionData(transaction);
+    //APPROVED, DECLINED_INSUFFECIENT_FUND, DECLINED_STOLEN_CARD, FRAUD_CARD, INTERNAL_SERVER_ERROR
+    switch (receiveTransaction) {
+        case APPROVED:
+            printf("\nsuccessful transaction .");
+            break;
+        case DECLINED_INSUFFECIENT_FUND:
+            printf("\ndecline transaction , insufficient fund");
+            break;
+        case DECLINED_STOLEN_CARD:
+            printf("\ndecline transaction , this card is stolen");
+            break;
+        case FRAUD_CARD:
+            printf("\nAccount not found ");
+            break;
+        case INTERNAL_SERVER_ERROR:
+            printf("\nsaving failed");
+        default:
+            break;
+
+
+    }
+    printf("\n");
+    //listSavedTransactions();
 
 }

@@ -14,7 +14,6 @@
 void getDate(uint8_t *date , int *month , int *year){
 
     short length  = (short) strlen((char*)date);
-    printf("date length %d \n",length);
     for(int i = length-1 ; i > 0 ; --i){
         if(date[i] == '/') {
             for (int j = i - 2; j < length; ++j) {
@@ -34,7 +33,6 @@ EN_terminalError_t getTransactionDate(ST_terminalData_t *termData){
     struct tm tm = *localtime(&T);
     /** get local date and store it in terminal date transaction with format (DD/MM/YYYY) */
     snprintf((char *)termData->transactionDate,11,"%02d/%02d/%04d",tm.tm_mday, tm.tm_mon+1, tm.tm_year+1900);
-    printf("date is %s\n", termData->transactionDate);
     short length = (short )strlen((char *)termData->transactionDate);
     if(length > 0 && length < 11)
 
@@ -47,9 +45,7 @@ EN_terminalError_t getTransactionDate(ST_terminalData_t *termData){
 EN_terminalError_t isCardExpired(ST_cardData_t *cardData, ST_terminalData_t *termData){
     int terminalMonth =0 , terminalYear =0 , cardMonth =0 , cardYear =0;
     getDate(cardData->cardExpirationDate, &cardMonth, &cardYear);
-    printf("get card date %d / %d \n",cardMonth , cardYear);
     getDate(termData->transactionDate, &terminalMonth, &terminalYear);
-    printf("terminal month %d , terminal year %d , cardmonth %d , cardyear %d ,",terminalMonth ,terminalYear,cardMonth , cardYear);
     if(terminalYear == cardYear && terminalMonth <= cardMonth || terminalYear < cardYear )
         return TERMINAL_OK;
     else
@@ -58,6 +54,7 @@ EN_terminalError_t isCardExpired(ST_cardData_t *cardData, ST_terminalData_t *ter
 
 EN_terminalError_t getTransactionAmount(ST_terminalData_t *termData){
     char val[8] ;
+    printf("\nENTER WITHDRAW AMOUNT : " );
     readLine(val);
     termData->transAmount = atof(val);
     if(termData->transAmount <= 0 )

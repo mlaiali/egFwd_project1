@@ -9,7 +9,7 @@
 #include <stdbool.h>
 
 EN_cardError_t getCardHolderName(ST_cardData_t *cardData){
-    printf("ENTER HOLDER NAME : ");
+    printf("\nENTER HOLDER NAME : ");
     readLine((char *)cardData->cardHolderName);
     short  lengthName = (short )strlen((char *)cardData->cardHolderName);
     short  lettersLength=0 ;
@@ -25,7 +25,7 @@ EN_cardError_t getCardHolderName(ST_cardData_t *cardData){
 
 EN_cardError_t getCardExpiryDate(ST_cardData_t *cardData){
 
-    printf("Enter Expiry Date (MM/YY) : ");
+    printf("\nEnter Expiry Date (MM/YY) : ");
     readLine((char *)cardData->cardExpirationDate);
     short  length =(short ) strlen((char *)cardData->cardExpirationDate);
     int  month = 0, year = 0;
@@ -42,7 +42,7 @@ EN_cardError_t getCardExpiryDate(ST_cardData_t *cardData){
 }
 
 EN_cardError_t getCardPAN(ST_cardData_t *cardData){
-    printf("Enter Primary Account Number : ");
+    printf("\nEnter Primary Account Number : ");
     readLine((char *)cardData->primaryAccountNumber);
     short length = (short) strlen((char *) cardData->primaryAccountNumber);
     if (length >= 16 && length <= 19)
@@ -51,29 +51,3 @@ EN_cardError_t getCardPAN(ST_cardData_t *cardData){
         return WRONG_PAN;
 }
 
-void appl(ST_cardData_t *cardData) {
-    getCardHolderName(cardData);
-    getCardExpiryDate(cardData);
-    getCardPAN(cardData);
-}
-
-
-//    int temp =0, luhnNumber =0;
-//    bool isNext = false;
-//    printf("Enter Primary Account Number : ");
-//    readLine((char *)cardData->primaryAccountNumber);
-//    short length = (short) strlen((char *) cardData->primaryAccountNumber);
-//    if (length >= 16 && length <= 19) {
-//        for (int i = length - 1; i >= 0; --i) {
-//            temp += (cardData->primaryAccountNumber[i] - '0');
-//            if (isNext)
-//                (temp * 2) > 9 ? (temp *= 2 - 9) : (temp *= 2);
-//            luhnNumber += temp;
-//            isNext = !isNext;
-//            temp = 0;
-//        }
-//    }
-//    if(luhnNumber %10 ==0)
-//        return CARD_OK;
-//    else
-//        return WRONG_EXP_DATE;

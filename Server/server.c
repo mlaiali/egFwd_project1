@@ -34,7 +34,7 @@ EN_transState_t receiveTransactionData(ST_transaction_t *transData){
     EN_serverError_t blockedAccount = isBlockedAccount(&accountsDb);
     EN_serverError_t amountAvailable = isAmountAvailable(&transData->terminalData,&accountsDb);
     EN_serverError_t sTransaction = saveTransaction(&transData);
-
+//    listSavedTransactions();
     if(validAccount == ACCOUNT_NOT_FOUND)
         return DECLINED_STOLEN_CARD;
     if(blockedAccount == TRANSACTION_NOT_FOUND)
@@ -89,9 +89,21 @@ EN_serverError_t saveTransaction(ST_transaction_t *transData){
         transaction[transData->transactionSequenceNumber].transactionSequenceNumber =transData->transactionSequenceNumber +1;
 
         sequenceIndicate ++;
-        return SERVER_OK;
 
     }
 
-    return SAVING_FAILED;
+    return SERVER_OK;
+}
+
+void listSavedTransactions(void){
+    for (int i = 0; i < 255; ++i) {
+        printf("\n%d",transaction[i].transactionSequenceNumber);
+        printf("\n%s",transaction[i].terminalData.transactionDate);
+        printf("\n%f",transaction[i].terminalData.transAmount);
+        printf("\n%f",transaction[i].terminalData.maxTransAmount);
+        printf("\n%s",transaction[i].cardHolderData.cardHolderName);
+        printf("\n%s",transaction[i].cardHolderData.primaryAccountNumber);
+        printf("\n%s",transaction[i].cardHolderData.cardExpirationDate);
+
+    }
 }
