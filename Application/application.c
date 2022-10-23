@@ -4,10 +4,11 @@
 
 #include "application.h"
 #define appStart main
-
-ST_cardData_t stCardData;
-ST_terminalData_t stTerminalData;
+//
+//ST_cardData_t stCardData;
+//ST_terminalData_t stTerminalData;
 void appStart(void ){
+
     //card error flags
     EN_cardError_t cardHolderName;
     EN_cardError_t cardExpDate;
@@ -24,17 +25,17 @@ void appStart(void ){
     cardPAN = getCardPAN(cardData);
 
     if(cardHolderName == WRONG_NAME){
-        printf("WRONG NAME ..!");
+        printf("\nWRONG NAME ..!");
         exit(0);
     }
 
     if(cardExpDate == WRONG_EXP_DATE){
-        printf("WRONG EXPIRY DATE ..!");
+        printf("\nWRONG EXPIRY DATE ..!");
         exit(0);
     }
 
     if(cardPAN == WRONG_PAN){
-        printf("WRONG PAN ..!");
+        printf("\nWRONG PAN ..!");
         exit(0);
     }
 
@@ -64,32 +65,32 @@ void appStart(void ){
     validCardPAN = isValidCardPAN(cardData);
 
     if (transactionDate == WRONG_DATE){
-        printf("FAILED TO READ LOCAL DATE ...!");
+        printf("\nFAILED TO READ LOCAL DATE ...!");
         exit(0);
     }
 
     if (cardExpired == EXPIRED_CARD){
-        printf("EXPIRED CARD ... !");
+        printf("\nEXPIRED CARD ... !");
         exit(0);
     }
 
     if (transactionAmount == INVALID_AMOUNT){
-        printf("INVALID AMOUNT ...!");
+        printf("\nINVALID AMOUNT ...!");
         exit(0);
     }
 
     if (belowMaxAmount == EXCEED_MAX_AMOUNT){
-        printf("EXCEED MAX AMOUNT ...!");
+        printf("\nEXCEED MAX AMOUNT ...!");
         exit(0);
     }
 
     if(maxAmount == INVALID_MAX_AMOUNT){
-        printf("INVALID MAX AMOUNT ..,!");
+        printf("\nINVALID MAX AMOUNT ..,!");
         exit(0);
     }
 
     if (validCardPAN == INVALID_CARD){
-        printf("INVALID CARD PAN ...!");
+        printf("\nINVALID CARD PAN ...!");
         exit(0);
     }
 
@@ -129,6 +130,6 @@ void appStart(void ){
 
     }
     printf("\n");
-    //listSavedTransactions();
+    listSavedTransactions();
 
 }
