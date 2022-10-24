@@ -3,7 +3,7 @@
 //
 
 #include "application.h"
-#define appStart main
+//#define appStart main
 //
 //ST_cardData_t stCardData;
 //ST_terminalData_t stTerminalData;
@@ -20,9 +20,9 @@ void appStart(void ){
 
 
     //card module
-    cardHolderName = getCardHolderName(cardData);
-    cardExpDate = getCardExpiryDate(cardData);
-    cardPAN = getCardPAN(cardData);
+    cardHolderName  = getCardHolderName(cardData);
+    cardExpDate     = getCardExpiryDate(cardData);
+    cardPAN         = getCardPAN(cardData);
 
     if(cardHolderName == WRONG_NAME){
         printf("\nWRONG NAME ..!");
@@ -56,13 +56,12 @@ void appStart(void ){
 
     //terminal module
 
-    transactionDate = getTransactionDate(termData);
-    cardExpired = isCardExpired(cardData,termData);
-    transactionAmount = getTransactionAmount(termData);
-    maxAmount = setMaxAmount(termData, 15000);
-    belowMaxAmount = isBelowMaxAmount(termData);
-
-    validCardPAN = isValidCardPAN(cardData);
+    transactionDate     = getTransactionDate(termData);
+    cardExpired         = isCardExpired(cardData,termData);
+    transactionAmount   = getTransactionAmount(termData);
+    maxAmount           = setMaxAmount(termData, 15000);
+    belowMaxAmount      = isBelowMaxAmount(termData);
+    validCardPAN        = isValidCardPAN(cardData);
 
     if (transactionDate == WRONG_DATE){
         printf("\nFAILED TO READ LOCAL DATE ...!");

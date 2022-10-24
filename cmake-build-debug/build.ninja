@@ -49,12 +49,6 @@ cmake_ninja_workdir = /home/server/CLionProjects/egFwd_project1/cmake-build-debu
 
 build cmake_object_order_depends_target_egFwd_project1: phony || CMakeFiles/egFwd_project1.dir
 
-build CMakeFiles/egFwd_project1.dir/main.c.o: C_COMPILER__egFwd_project1_Debug /home/server/CLionProjects/egFwd_project1/main.c || cmake_object_order_depends_target_egFwd_project1
-  DEP_FILE = CMakeFiles/egFwd_project1.dir/main.c.o.d
-  FLAGS = -g -std=gnu99
-  OBJECT_DIR = CMakeFiles/egFwd_project1.dir
-  OBJECT_FILE_DIR = CMakeFiles/egFwd_project1.dir
-
 build CMakeFiles/egFwd_project1.dir/Card/card.c.o: C_COMPILER__egFwd_project1_Debug /home/server/CLionProjects/egFwd_project1/Card/card.c || cmake_object_order_depends_target_egFwd_project1
   DEP_FILE = CMakeFiles/egFwd_project1.dir/Card/card.c.o.d
   FLAGS = -g -std=gnu99
@@ -93,7 +87,7 @@ build CMakeFiles/egFwd_project1.dir/Application/application.c.o: C_COMPILER__egF
 #############################################
 # Link the executable egFwd_project1
 
-build egFwd_project1: C_EXECUTABLE_LINKER__egFwd_project1_Debug CMakeFiles/egFwd_project1.dir/main.c.o CMakeFiles/egFwd_project1.dir/Card/card.c.o CMakeFiles/egFwd_project1.dir/Terminal/terminal.c.o CMakeFiles/egFwd_project1.dir/util/utiliti.c.o CMakeFiles/egFwd_project1.dir/Server/server.c.o CMakeFiles/egFwd_project1.dir/Application/application.c.o
+build egFwd_project1: C_EXECUTABLE_LINKER__egFwd_project1_Debug CMakeFiles/egFwd_project1.dir/Card/card.c.o CMakeFiles/egFwd_project1.dir/Terminal/terminal.c.o CMakeFiles/egFwd_project1.dir/util/utiliti.c.o CMakeFiles/egFwd_project1.dir/Server/server.c.o CMakeFiles/egFwd_project1.dir/Application/application.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/egFwd_project1.dir
   POST_BUILD = :

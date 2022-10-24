@@ -5,12 +5,9 @@
 #ifndef EGFWD_PROJECT1_UTIL_H
 #define EGFWD_PROJECT1_UTIL_H
 
-void readLine(char *dist);//{
-//    int input;
-//    int index = 0;
-//    while ((input=getchar()) != '\n'){
-//        dist[index]= input;
-//        index++;
-//    }
-//}
+void readLine(char *dist);
+void scanl (char *dis,int size ,int *charCount);
+
+
+void getDate(uint8_t *date , int *month , int *year);
 #endif //EGFWD_PROJECT1_UTIL_H
